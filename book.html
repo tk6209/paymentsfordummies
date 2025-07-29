@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="pageTitle">Pagamentos Digitais for Dummies</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            text-align: justify; /* Alinha todo o texto do corpo justificado */
+        }
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .header {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center; /* Mantém o cabeçalho centralizado */
+        }
+        .header img {
+            max-width: 200px; /* Tamanho médio para o logo */
+            height: auto;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #007bff;
+            margin-bottom: 0.5rem;
+        }
+        .header p {
+            font-size: 1.1rem;
+            color: #555;
+            text-align: justify; /* Garante que o parágrafo do cabeçalho seja justificado */
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center; /* Mantém os títulos das seções centralizados */
+        }
+        .card {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%; /* Ensure cards in a row have similar height */
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .card h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #007bff;
+            margin-bottom: 0.75rem;
+            text-align: center; /* Mantém os títulos dos cards centralizados */
+        }
+        .card p {
+            color: #666;
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Allow description to take available space */
+            text-align: justify; /* Garante que os parágrafos dos cards sejam justificados */
+        }
+        .card a {
+            display: block; /* Make it a block element to take full width and allow text-align */
+            color: #007bff; /* Link color */
+            text-decoration: none; /* No underline by default */
+            font-weight: 400; /* Regular weight for a link */
+            transition: color 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
+            text-align: left; /* Align text to the left within its block */
+            margin-top: 0.5rem; /* Small margin from the description */
+        }
+        .card a:hover {
+            color: #0056b3; /* Darker blue on hover */
+            text-decoration: underline; /* Underline on hover */
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+        .footer p {
+            text-align: center; /* Centraliza o parágrafo do rodapé */
+        }
+
+        /* Loading spinner styles */
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #007bff; /* Blue */
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 1s linear infinite;
+            display: none; /* Hidden by default */
+            margin-left: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .language-buttons {
+            display: flex;
+            justify-content: flex-end; /* Align to the right */
+            padding: 1rem 2rem; /* Add some padding */
+            gap: 0.75rem; /* Space between buttons */
+        }
+
+        .language-buttons button {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            padding: 0.5rem 0.75rem; /* Smaller padding for compact look */
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+            min-width: 40px; /* Ensure buttons have a minimum width */
+            text-align: center;
+        }
+        .language-buttons button:hover {
+            background-color: #cbd5e0;
+        }
+        .language-buttons button.active {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        /* Styles for the new search-like input */
+        .search-input-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            gap: 1rem; /* Space between input and button */
+            margin-bottom: 2rem; /* Space below the search input */
+        }
+        .search-input {
+            width: 100%;
+            max-width: 500px; /* Max width for the input field */
+            padding: 0.75rem 1.5rem; /* Increased padding for better look */
+            border: 1px solid #cbd5e0; /* Light border */
+            border-radius: 9999px; /* Fully rounded */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: all 0.2s ease-in-out;
+        }
+        .search-input:focus {
+            outline: none;
+            border-color: #007bff; /* Blue border on focus */
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Blue glow on focus */
+        }
+
+        /* Increased margin-top for content section */
+        .content-section {
+            margin-top: 4rem; /* Aumenta o espaço entre a barra de pesquisa e esta seção */
+        }
+
+        /* Search results container */
+        .search-results {
+            background-color: #ffffff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            margin-top: 2rem;
+            display: none; /* Hidden by default */
+            text-align: left;
+        }
+        .search-results h3 {
+            font-size: 1.25rem;
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        .search-results p {
+            color: #333;
+            line-height: 1.8;
+        }
+        .message-box {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            display: none; /* Hidden by default */
+            text-align: center;
+        }
+        .message-box button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="language-buttons">
+        <button id="lang-en" onclick="setLanguage('en')">EN</button>
+        <button id="lang-pt" onclick="setLanguage('pt')" class="active">PT</button>
+        <button id="lang-es" onclick="setLanguage('es')">ES</button>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <img src="https://placehold.co/200x150/007bff/ffffff?text=Book+Cover" alt="Capa do Livro Pagamentos Digitais for Dummies">
+            <h1 data-key="headerTitle">Pagamentos Digitais for Dummies</h1>
+            <p data-key="headerDescription">Um guia completo e descomplicado para entender o mundo dos pagamentos digitais, desde o básico até as tendências mais avançadas. Ideal para quem busca segurança, praticidade e inovação nas transações financeiras.</p>
+        </header>
+
+        <div class="search-input-container">
+            <input type="text" id="searchInput" class="search-input" data-key="searchInputPlaceholder" placeholder="Pesquisar tópicos no livro..." onkeydown="handleSearch(event)">
+            <div id="searchLoader" class="loader"></div>
+        </div>
+
+        <div id="searchResults" class="search-results">
+            <h3 data-key="searchResultsTitle">Resultados da Pesquisa:</h3>
+            <p id="searchResultText"></p>
+        </div>
+
+        <section class="content-section">
+            <h2 class="section-title" data-key="sectionTitle">Capítulos e Tópicos Essenciais</h2>
+            <div class="grid-container">
+                <div class="card">
+                    <h2 data-key="chapter1Title">Introdução aos Pagamentos Digitais</h2>
+                    <p data-key="chapter1Description">Descubra o que são pagamentos digitais, sua história e por que eles se tornaram tão importantes no mundo atual. Entenda os benefícios e desafios.</p>
+                    <a href="#" data-key="readMoreLink">Leia mais</a>
+                </div>
+                <div class="card">
+                    <h2 data-key="chapter2Title">Tipos de Pagamentos Digitais</h2>
+                    <p data-key="chapter2Description">Explore as diversas modalidades: cartões de crédito/débito, transferências bancárias (TED, DOC, Pix), carteiras digitais, criptomoedas e mais.</p>
+                    <a href="#" data-key="readMoreLink">Leia mais</a>
+                </div>
+                <div class="card">
+                    <h2 data-key="chapter3Title">Segurança em Transações Digitais</h2>
+                    <p data-key="chapter3Description">Aprenda as melhores práticas para proteger suas informações e dinheiro. Dicas sobre senhas, autenticação de dois fatores e como evitar fraudes.</p>
+                    <a href="#" data-key="readMoreLink">Leia mais</a>
+                </div>
+                <div class="card">
+                    <h2 data-key="chapter4Title">O Papel do Pix no Brasil</h2>
+                    <p data-key="chapter4Description">Um mergulho profundo no Pix: como funciona, suas vantagens, limites, e como utilizá-lo de forma eficiente e segura no dia a dia.</p>
+                    <a href="#" data-key="readMoreLink">Leia mais</a>
+                </div>
+                <div class="card">
+                    <h2 data-key="chapter5Title">Carteiras Digitais e Seus Benefícios</h2>
+                    <p data-key="chapter5Description">Conheça as principais carteiras digitais (Google Pay, Apple Pay, Samsung Pay) e como elas simplificam suas compras e pagamentos.</p>
+                    <a href="#" data-key="readMoreLink">Leia mais</a>
+                </div>
+                <div class="card">
+                    <h2 data-key="chapter6Title">Tendências Futuras em Pagamentos</h2>
+                    <p data-key="chapter6Description">O que esperar do futuro? Pagamentos por aproximação, biometria, inteligência artificial e o avanço das moedas digitais de bancos centrais (CBDCs).</p>
+                    <a href="#" data-key="readMoreLink">Leia mais</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <p data-key="footerCopyright">&copy; 2025 AuthPros. Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="messageBox" class="message-box">
+        <p id="messageText"></p>
+        <button onclick="hideMessageBox()" data-key="messageBoxOk">OK</button>
+    </div>
+
+    <script>
+        // Objeto de traduções para diferentes idiomas
+        const translations = {
+            'pt': {
+                pageTitle: 'Pagamentos Digitais for Dummies',
+                headerTitle: 'Pagamentos Digitais for Dummies',
+                headerDescription: 'Um guia completo e descomplicado para entender o mundo dos pagamentos digitais, desde o básico até as tendências mais avançadas. Ideal para quem busca segurança, praticidade e inovação nas transações financeiras.',
+                searchInputPlaceholder: 'Pesquisar tópicos no livro...',
+                searchResultsTitle: 'Resultados da Pesquisa:',
+                sectionTitle: 'Capítulos e Tópicos Essenciais',
+                chapter1Title: 'Introdução aos Pagamentos Digitais',
+                chapter1Description: 'Descubra o que são pagamentos digitais, sua história e por que eles se tornaram tão importantes no mundo atual. Entenda os benefícios e desafios.',
+                chapter2Title: 'Tipos de Pagamentos Digitais',
+                chapter2Description: 'Explore as diversas modalidades: cartões de crédito/débito, transferências bancárias (TED, DOC, Pix), carteiras digitais, criptomoedas e mais.',
+                chapter3Title: 'Segurança em Transações Digitais',
+                chapter3Description: 'Aprenda as melhores práticas para proteger suas informações e dinheiro. Dicas sobre senhas, autenticação de dois fatores e como evitar fraudes.',
+                chapter4Title: 'O Papel do Pix no Brasil',
+                chapter4Description: 'Um mergulho profundo no Pix: como funciona, suas vantagens, limites, e como utilizá-lo de forma eficiente e segura no dia a dia.',
+                chapter5Title: 'Carteiras Digitais e Seus Benefícios',
+                chapter5Description: 'Conheça as principais carteiras digitais (Google Pay, Apple Pay, Samsung Pay) e como elas simplificam suas compras e pagamentos.',
+                chapter6Title: 'Tendências Futuras em Pagamentos',
+                chapter6Description: 'O que esperar do futuro? Pagamentos por aproximação, biometria, inteligência artificial e o avanço das moedas digitais de bancos centrais (CBDCs).',
+                readMoreLink: 'Leia mais',
+                footerCopyright: '&copy; 2025 AuthPros. Todos os direitos reservados.',
+                messageBoxLangInDev: 'Funcionalidade de idioma em desenvolvimento. Conteúdo permanece em Português.',
+                messageBoxEmptySearch: 'Por favor, digite algo para pesquisar.',
+                messageBoxNoResults: 'Não foi possível obter resultados para a sua pesquisa. Tente novamente.',
+                messageBoxError: 'Ocorreu um erro ao processar sua pesquisa. Por favor, tente novamente mais tarde.',
+                messageBoxOk: 'OK'
+            },
+            'en': {
+                pageTitle: 'Digital Payments for Dummies',
+                headerTitle: 'Digital Payments for Dummies',
+                headerDescription: 'A complete and straightforward guide to understanding the world of digital payments, from basics to advanced trends. Ideal for those seeking security, practicality, and innovation in financial transactions.',
+                searchInputPlaceholder: 'Search topics in the book...',
+                searchResultsTitle: 'Search Results:',
+                sectionTitle: 'Essential Chapters and Topics',
+                chapter1Title: 'Introduction to Digital Payments',
+                chapter1Description: 'Discover what digital payments are, their history, and why they have become so important in today\'s world. Understand the benefits and challenges.',
+                chapter2Title: 'Types of Digital Payments',
+                chapter2Description: 'Explore various modalities: credit/debit cards, bank transfers (TED, DOC, Pix), digital wallets, cryptocurrencies, and more.',
+                chapter3Title: 'Security in Digital Transactions',
+                chapter3Description: 'Learn best practices to protect your information and money. Tips on passwords, two-factor authentication, and how to avoid fraud.',
+                chapter4Title: 'The Role of Pix in Brazil',
+                chapter4Description: 'A deep dive into Pix: how it works, its advantages, limits, and how to use it efficiently and securely in daily life.',
+                chapter5Title: 'Digital Wallets and Their Benefits',
+                chapter5Description: 'Get to know the main digital wallets (Google Pay, Apple Pay, Samsung Pay) and how they simplify your purchases and payments.',
+                chapter6Title: 'Future Trends in Payments',
+                chapter6Description: 'What to expect from the future? Proximity payments, biometrics, artificial intelligence, and the advancement of central bank digital currencies (CBDCs).',
+                readMoreLink: 'Read more',
+                footerCopyright: '&copy; 2025 AuthPros. All rights reserved.',
+                messageBoxLangInDev: 'Language functionality in development. Content remains in English.',
+                messageBoxEmptySearch: 'Please enter something to search.',
+                messageBoxNoResults: 'Could not retrieve search results. Please try again.',
+                messageBoxError: 'An error occurred while processing your search. Please try again later.',
+                messageBoxOk: 'OK'
+            },
+            'es': {
+                pageTitle: 'Pagos Digitales para Dummies',
+                headerTitle: 'Pagos Digitales para Dummies',
+                headerDescription: 'Una guía completa y sencilla para comprender el mundo de los pagos digitales, desde lo básico hasta las tendencias más avanzadas. Ideal para quienes buscan seguridad, practicidad e innovación en las transacciones financieras.',
+                searchInputPlaceholder: 'Buscar temas en el libro...',
+                searchResultsTitle: 'Resultados de la Búsqueda:',
+                sectionTitle: 'Capítulos y Temas Esenciales',
+                chapter1Title: 'Introducción a los Pagos Digitales',
+                chapter1Description: 'Descubra qué son los pagos digitales, su historia y por qué se han vuelto tan importantes en el mundo actual. Comprenda los beneficios y desafíos.',
+                chapter2Title: 'Tipos de Pagos Digitales',
+                chapter2Description: 'Explore las diversas modalidades: tarjetas de crédito/débito, transferencias bancarias (TED, DOC, Pix), billeteras digitales, criptomonedas y más.',
+                chapter3Title: 'Seguridad en Transacciones Digitales',
+                chapter3Description: 'Aprenda las mejores prácticas para proteger su información y dinero. Consejos sobre contraseñas, autenticación de dos factores y cómo evitar fraudes.',
+                chapter4Title: 'El Papel de Pix en Brasil',
+                chapter4Description: 'Una inmersión profunda en Pix: cómo funciona, sus ventajas, límites y cómo usarlo de manera eficiente y segura en la vida diaria.',
+                chapter5Title: 'Billeteras Digitales y Sus Beneficios',
+                chapter5Description: 'Conozca las principales billeteras digitales (Google Pay, Apple Pay, Samsung Pay) y cómo simplifican sus compras y pagos.',
+                chapter6Title: 'Futuras Tendencias en Pagos',
+                chapter6Description: '¿Qué esperar del futuro? Pagos por aproximación, biometría, inteligencia artificial y el avance de las monedas digitales de bancos centrales (CBDC).',
+                readMoreLink: 'Leer más',
+                footerCopyright: '&copy; 2025 AuthPros. Todos los derechos reservados.',
+                messageBoxLangInDev: 'La funcionalidad de idioma está en desarrollo. El contenido permanece en español.',
+                messageBoxEmptySearch: 'Por favor, ingrese algo para buscar.',
+                messageBoxNoResults: 'No se pudieron obtener resultados de búsqueda. Inténtelo de nuevo.',
+                messageBoxError: 'Se produjo un error al procesar su búsqueda. Por favor, inténtelo de nuevo más tarde.',
+                messageBoxOk: 'OK'
+            }
+        };
+
+        let currentLang = 'pt'; // Idioma padrão
+
+        // Função para mostrar a caixa de mensagem personalizada
+        function showMessageBox(messageKey) {
+            const message = translations[currentLang][messageKey];
+            document.getElementById('messageText').innerText = message;
+            document.getElementById('messageBox').style.display = 'block';
+        }
+
+        // Função para esconder a caixa de mensagem personalizada
+        function hideMessageBox() {
+            document.getElementById('messageBox').style.display = 'none';
+        }
+
+        // Função para aplicar as traduções
+        function applyTranslations(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang; // Atualiza o atributo lang da tag html
+
+            // Atualiza o título da página
+            document.querySelector('title').innerText = translations[lang].pageTitle;
+
+            // Atualiza os elementos com data-key
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    if (element.tagName === 'INPUT') {
+                        element.placeholder = translations[lang][key];
+                    } else {
+                        element.innerHTML = translations[lang][key];
+                    }
+                }
+            });
+
+            // Atualiza o estado ativo dos botões de idioma
+            const buttons = document.querySelectorAll('.language-buttons button');
+            buttons.forEach(button => button.classList.remove('active'));
+            document.getElementById('lang-' + lang).classList.add('active');
+        }
+
+        // Função para lidar com a troca de idioma
+        function setLanguage(lang) {
+            applyTranslations(lang);
+            // showMessageBox('messageBoxLangInDev'); // Mensagem de que a funcionalidade está em desenvolvimento
+        }
+
+        // Inicializa a página com o idioma padrão
+        document.addEventListener('DOMContentLoaded', () => {
+            applyTranslations(currentLang);
+        });
+
+        // Função para lidar com a entrada de pesquisa
+        async function handleSearch(event) {
+            if (event.key === 'Enter') {
+                const query = document.getElementById('searchInput').value;
+                const searchLoader = document.getElementById('searchLoader');
+                const searchResultsDiv = document.getElementById('searchResults');
+                const searchResultText = document.getElementById('searchResultText');
+
+                if (query.trim() === '') {
+                    showMessageBox('messageBoxEmptySearch');
+                    searchResultsDiv.style.display = 'none';
+                    return;
+                }
+
+                searchLoader.style.display = 'block'; // Mostra o spinner
+                searchResultsDiv.style.display = 'none'; // Esconde resultados anteriores
+
+                try {
+                    // LLM API call for search
+                    let chatHistory = [];
+                    // Construct the prompt in the current language
+                    const promptText = `Gere uma resposta concisa e útil para a seguinte pergunta sobre pagamentos digitais, como se fosse do livro "Pagamentos Digitais for Dummies": "${query}". Mantenha a resposta em ${currentLang === 'en' ? 'inglês' : currentLang === 'es' ? 'espanhol' : 'português'} e com no máximo 150 palavras.`;
+                    chatHistory.push({ role: "user", parts: [{ text: promptText }] });
+
+                    const payload = { contents: chatHistory };
+                    const apiKey = "";
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const text = result.candidates[0].content.parts[0].text;
+                        searchResultText.innerText = text;
+                        searchResultsDiv.style.display = 'block'; // Mostra os resultados
+                    } else {
+                        searchResultText.innerText = translations[currentLang].messageBoxNoResults;
+                        searchResultsDiv.style.display = 'block';
+                    }
+                } catch (error) {
+                    console.error('Erro ao buscar resultados da pesquisa:', error);
+                    searchResultText.innerText = translations[currentLang].messageBoxError;
+                    searchResultsDiv.style.display = 'block';
+                } finally {
+                    searchLoader.style.display = 'none'; // Esconde o spinner
+                }
+            }
+        }
+    </script>
+</body>
+</html>

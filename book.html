@@ -223,6 +223,233 @@
             cursor: pointer;
             margin-top: 15px;
         }
+
+        /* Styles for the new hero banner */
+        .hero-banner {
+            background: linear-gradient(to right, #007bff, #0056b3); /* Blue gradient */
+            color: #ffffff;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden; /* Ensures the background pattern doesn't spill */
+        }
+
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+            z-index: 0;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            max-width: 960px;
+            width: 100%;
+            z-index: 1; /* Ensure content is above the pattern */
+        }
+
+        .hero-text {
+            flex: 2;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+
+        .hero-button {
+            background-color: #ffc107; /* Yellow/Orange button */
+            color: #333;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block; /* Allows padding and shadow */
+        }
+
+        .hero-button:hover {
+            background-color: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-image img {
+            max-width: 250px;
+            height: auto;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Responsive adjustments for banner */
+        @media (min-width: 768px) {
+            .hero-content {
+                flex-direction: row;
+                text-align: left;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .hero-text {
+                text-align: left;
+                margin-right: 3rem;
+                margin-bottom: 0;
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1001; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            max-width: 700px; /* Increased max-width for more fields */
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #333;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-content h2 {
+            color: #007bff;
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .modal-content form {
+            display: grid; /* Use grid for form layout */
+            grid-template-columns: 1fr; /* Default to single column on small screens */
+            gap: 1rem;
+        }
+
+        @media (min-width: 600px) { /* Two columns on larger screens */
+            .modal-content form {
+                grid-template-columns: 1fr 1fr;
+            }
+            .form-full-width { /* For elements that should span both columns */
+                grid-column: 1 / -1;
+            }
+        }
+
+        .modal-content input[type="text"],
+        .modal-content input[type="email"],
+        .modal-content input[type="tel"],
+        .modal-content select { /* Added select for dropdowns */
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            width: 100%; /* Ensure inputs take full width of their grid cell */
+            box-sizing: border-box; /* Include padding and border in element's total width */
+        }
+
+        .modal-content button[type="submit"] {
+            background-color: #e60000; /* Red button as in the image */
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            grid-column: 1 / -1; /* Make submit button span full width */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .modal-content button[type="submit"]:hover {
+            background-color: #b30000;
+        }
+
+        .consent-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #555;
+            grid-column: 1 / -1; /* Span full width */
+        }
+
+        .consent-checkbox input[type="checkbox"] {
+            margin-top: 0.25rem; /* Align checkbox with text */
+        }
+
+        .consent-checkbox a {
+            color: #007bff;
+            text-decoration: underline;
+        }
+
+        /* Increased margin-top for the second section title */
+        .content-section .section-title[data-key="sectionTitleAdvanced"] {
+            margin-top: 3rem; /* Adjusted from 2rem to 3rem for more space */
+        }
     </style>
 </head>
 <body>
@@ -232,8 +459,23 @@
         <button id="lang-es" onclick="setLanguage('es')">ES</button>
     </div>
 
+    <!-- Hero Banner Section -->
+    <div class="hero-banner">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 data-key="heroBannerTitle">O Guia Completo para Dominar os Pagamentos Digitais</h1>
+                <p data-key="heroBannerDescription">Desvende o universo das transações financeiras modernas com este guia prático e acessível. Tudo o que você precisa saber para pagamentos seguros e eficientes.</p>
+                <a href="#" class="hero-button" onclick="openDownloadModal(event)" data-key="heroButtonText">Baixar o Livro</a>
+            </div>
+            <div class="hero-image">
+                <img src="https://placehold.co/250x350/007bff/ffffff?text=Capa+do+Livro" alt="Capa do Livro Pagamentos Digitais for Dummies">
+            </div>
+        </div>
+    </div>
+
     <div class="container">
-        <header class="header">
+        <header class="header" style="display: none;">
+            <!-- This header is now redundant with the hero banner, keeping it hidden for now -->
             <img src="https://placehold.co/200x150/007bff/ffffff?text=Book+Cover" alt="Capa do Livro Pagamentos Digitais for Dummies">
             <h1 data-key="headerTitle">Pagamentos Digitais for Dummies</h1>
             <p data-key="headerDescription">Um guia completo e descomplicado para entender o mundo dos pagamentos digitais, desde o básico até as tendências mais avançadas. Ideal para quem busca segurança, praticidade e inovação nas transações financeiras.</p>
@@ -250,7 +492,7 @@
         </div>
 
         <section class="content-section">
-            <h2 class="section-title" data-key="sectionTitle">Capítulos e Tópicos Essenciais</h2>
+            <h2 class="section-title" data-key="sectionTitleEssential">Capítulos e Tópicos Essenciais</h2>
             <div class="grid-container">
                 <div class="card">
                     <h2 data-key="chapter1Title">Introdução aos Pagamentos Digitais</h2>
@@ -267,6 +509,12 @@
                     <p data-key="chapter3Description">Aprenda as melhores práticas para proteger suas informações e dinheiro. Dicas sobre senhas, autenticação de dois fatores e como evitar fraudes.</p>
                     <a href="#" data-key="readMoreLink">Leia mais</a>
                 </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title" data-key="sectionTitleAdvanced">Tópicos Avançados e Tendências</h2>
+            <div class="grid-container">
                 <div class="card">
                     <h2 data-key="chapter4Title">O Papel do Pix no Brasil</h2>
                     <p data-key="chapter4Description">Um mergulho profundo no Pix: como funciona, suas vantagens, limites, e como utilizá-lo de forma eficiente e segura no dia a dia.</p>
@@ -290,6 +538,40 @@
         <p data-key="footerCopyright">&copy; 2025 AuthPros. Todos os direitos reservados.</p>
     </footer>
 
+    <!-- Download Modal -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeDownloadModal()">&times;</span>
+            <h2 data-key="modalTitle">Baixe seu Guia Gratuito!</h2>
+            <p data-key="modalDescription">Preencha seus dados para receber o e-book "Pagamentos Digitais for Dummies" diretamente no seu e-mail.</p>
+            <form id="downloadForm">
+                <input type="text" id="firstName" name="firstName" data-key="formFirstNamePlaceholder" placeholder="Nome" required>
+                <input type="text" id="lastName" name="lastName" data-key="formLastNamePlaceholder" placeholder="Sobrenome" required>
+                <input type="email" id="corporateEmail" name="corporateEmail" data-key="formCorporateEmailPlaceholder" placeholder="Email corporativo" required>
+                <input type="text" id="company" name="company" data-key="formCompanyPlaceholder" placeholder="Empresa" required>
+                <select id="jobLevel" name="jobLevel" data-key="formJobLevelPlaceholder" required>
+                    <option value="" disabled selected data-key="formJobLevelPlaceholder">Nível de trabalho</option>
+                    <option value="entry" data-key="jobLevelEntry">Entrada</option>
+                    <option value="mid" data-key="jobLevelMid">Intermediário</option>
+                    <option value="senior" data-key="jobLevelSenior">Sênior</option>
+                    <option value="manager" data-key="jobLevelManager">Gerente</option>
+                    <option value="director" data-key="jobLevelDirector">Diretor</option>
+                    <option value="executive" data-key="jobLevelExecutive">Executivo</option>
+                </select>
+                <input type="text" id="jobFunction" name="jobFunction" data-key="formJobFunctionPlaceholder" placeholder="Função de trabalho" required>
+                <input type="tel" id="phoneNumber" name="phoneNumber" data-key="formPhoneNumberPlaceholder" placeholder="Número de telefone" required>
+                <input type="text" id="country" name="country" data-key="formCountryPlaceholder" placeholder="País" required>
+                <div class="consent-checkbox form-full-width">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent" data-key="formConsentText">Ao fornecer minhas informações de contato, eu concordo com o processamento de meus dados pela AuthPros e seus parceiros, e autorizo a AuthPros a entrar em contato comigo e a compartilhar informações com seus parceiros. Reconheço que as informações fornecidas podem ser utilizadas e associadas a outras informações que a AuthPros tenha coletado e utilizado conforme seu <a href="#" data-key="privacyNoticeLink">Aviso de privacidade</a>.</label>
+                </div>
+                <button type="submit" data-key="formSubmitButton">Enviar <span class="arrow-icon">&#8594;</span></button>
+            </form>
+            <div id="formLoader" class="loader" style="margin: 1rem auto;"></div>
+        </div>
+    </div>
+
+    <!-- Message Box -->
     <div id="messageBox" class="message-box">
         <p id="messageText"></p>
         <button onclick="hideMessageBox()" data-key="messageBoxOk">OK</button>
@@ -300,11 +582,15 @@
         const translations = {
             'pt': {
                 pageTitle: 'Pagamentos Digitais for Dummies',
-                headerTitle: 'Pagamentos Digitais for Dummies',
-                headerDescription: 'Um guia completo e descomplicado para entender o mundo dos pagamentos digitais, desde o básico até as tendências mais avançadas. Ideal para quem busca segurança, praticidade e inovação nas transações financeiras.',
+                heroBannerTitle: 'O Guia Completo para Dominar os Pagamentos Digitais',
+                heroBannerDescription: 'Desvende o universo das transações financeiras modernas com este guia prático e acessível. Tudo o que você precisa saber para pagamentos seguros e eficientes.',
+                heroButtonText: 'Baixar o Livro',
+                headerTitle: 'Pagamentos Digitais for Dummies', // Kept for consistency, though hidden
+                headerDescription: 'Um guia completo e descomplicado para entender o mundo dos pagamentos digitais, desde o básico até as tendências mais avançadas. Ideal para quem busca segurança, praticidade e inovação nas transações financeiras.', // Kept for consistency, though hidden
                 searchInputPlaceholder: 'Pesquisar tópicos no livro...',
                 searchResultsTitle: 'Resultados da Pesquisa:',
-                sectionTitle: 'Capítulos e Tópicos Essenciais',
+                sectionTitleEssential: 'Capítulos e Tópicos Essenciais',
+                sectionTitleAdvanced: 'Tópicos Avançados e Tendências',
                 chapter1Title: 'Introdução aos Pagamentos Digitais',
                 chapter1Description: 'Descubra o que são pagamentos digitais, sua história e por que eles se tornaram tão importantes no mundo atual. Entenda os benefícios e desafios.',
                 chapter2Title: 'Tipos de Pagamentos Digitais',
@@ -323,15 +609,41 @@
                 messageBoxEmptySearch: 'Por favor, digite algo para pesquisar.',
                 messageBoxNoResults: 'Não foi possível obter resultados para a sua pesquisa. Tente novamente.',
                 messageBoxError: 'Ocorreu um erro ao processar sua pesquisa. Por favor, tente novamente mais tarde.',
-                messageBoxOk: 'OK'
+                messageBoxOk: 'OK',
+                modalTitle: 'Baixe seu Guia Gratuito!',
+                modalDescription: 'Preencha seus dados para receber o e-book "Pagamentos Digitais for Dummies" diretamente no seu e-mail.',
+                formFirstNamePlaceholder: 'Nome',
+                formLastNamePlaceholder: 'Sobrenome',
+                formCorporateEmailPlaceholder: 'Email corporativo',
+                formCompanyPlaceholder: 'Empresa',
+                formJobLevelPlaceholder: 'Nível de trabalho',
+                jobLevelEntry: 'Entrada',
+                jobLevelMid: 'Intermediário',
+                jobLevelSenior: 'Sênior',
+                jobLevelManager: 'Gerente',
+                jobLevelDirector: 'Diretor',
+                jobLevelExecutive: 'Executivo',
+                formJobFunctionPlaceholder: 'Função de trabalho',
+                formPhoneNumberPlaceholder: 'Número de telefone',
+                formCountryPlaceholder: 'País',
+                formConsentText: 'Ao fornecer minhas informações de contato, eu concordo com o processamento de meus dados pela AuthPros e seus parceiros, e autorizo a AuthPros a entrar em contato comigo e a compartilhar informações com seus parceiros. Reconheço que as informações fornecidas podem ser utilizadas e associadas a outras informações que a AuthPros tenha coletado e utilizado conforme seu <a href="#">Aviso de privacidade</a>.',
+                privacyNoticeLink: 'Aviso de privacidade',
+                formSubmitButton: 'Enviar',
+                formSuccess: 'Obrigado! Seu download foi enviado para o seu e-mail.',
+                formError: 'Ocorreu um erro ao enviar seus dados. Por favor, tente novamente.',
+                formProcessing: 'Processando...'
             },
             'en': {
                 pageTitle: 'Digital Payments for Dummies',
+                heroBannerTitle: 'The Complete Guide to Mastering Digital Payments',
+                heroBannerDescription: 'Unravel the world of modern financial transactions with this practical and accessible guide. Everything you need to know for secure and efficient payments.',
+                heroButtonText: 'Download the Book',
                 headerTitle: 'Digital Payments for Dummies',
                 headerDescription: 'A complete and straightforward guide to understanding the world of digital payments, from basics to advanced trends. Ideal for those seeking security, practicality, and innovation in financial transactions.',
                 searchInputPlaceholder: 'Search topics in the book...',
                 searchResultsTitle: 'Search Results:',
-                sectionTitle: 'Essential Chapters and Topics',
+                sectionTitleEssential: 'Essential Chapters and Topics',
+                sectionTitleAdvanced: 'Advanced Topics and Trends',
                 chapter1Title: 'Introduction to Digital Payments',
                 chapter1Description: 'Discover what digital payments are, their history, and why they have become so important in today\'s world. Understand the benefits and challenges.',
                 chapter2Title: 'Types of Digital Payments',
@@ -350,15 +662,41 @@
                 messageBoxEmptySearch: 'Please enter something to search.',
                 messageBoxNoResults: 'Could not retrieve search results. Please try again.',
                 messageBoxError: 'An error occurred while processing your search. Please try again later.',
-                messageBoxOk: 'OK'
+                messageBoxOk: 'OK',
+                modalTitle: 'Download Your Free Guide!',
+                modalDescription: 'Fill in your details to receive the "Digital Payments for Dummies" e-book directly in your email.',
+                formFirstNamePlaceholder: 'First Name',
+                formLastNamePlaceholder: 'Last Name',
+                formCorporateEmailPlaceholder: 'Corporate Email',
+                formCompanyPlaceholder: 'Company',
+                formJobLevelPlaceholder: 'Job Level',
+                jobLevelEntry: 'Entry',
+                jobLevelMid: 'Mid-Level',
+                jobLevelSenior: 'Senior',
+                jobLevelManager: 'Manager',
+                jobLevelDirector: 'Director',
+                jobLevelExecutive: 'Executive',
+                formJobFunctionPlaceholder: 'Job Function',
+                formPhoneNumberPlaceholder: 'Phone Number',
+                formCountryPlaceholder: 'Country',
+                formConsentText: 'By providing my contact information, I agree to the processing of my data by AuthPros and its partners, and I authorize AuthPros to contact me and share information with its partners. I acknowledge that the information provided may be used and associated with other information that AuthPros has collected and used according to its <a href="#">Privacy Notice</a>.',
+                privacyNoticeLink: 'Privacy Notice',
+                formSubmitButton: 'Submit',
+                formSuccess: 'Thank you! Your download has been sent to your email.',
+                formError: 'An error occurred while submitting your data. Please try again.',
+                formProcessing: 'Processing...'
             },
             'es': {
                 pageTitle: 'Pagos Digitales para Dummies',
+                heroBannerTitle: 'La Guía Completa para Dominar los Pagos Digitales',
+                heroBannerDescription: 'Descubre el universo de las transacciones financieras modernas con esta guía práctica y accesible. Todo lo que necesitas saber para pagos seguros y eficientes.',
+                heroButtonText: 'Descargar el Libro',
                 headerTitle: 'Pagos Digitales para Dummies',
                 headerDescription: 'Una guía completa y sencilla para comprender el mundo de los pagos digitales, desde lo básico hasta las tendencias más avanzadas. Ideal para quienes buscan seguridad, practicidad e innovación en las transacciones financieras.',
                 searchInputPlaceholder: 'Buscar temas en el libro...',
                 searchResultsTitle: 'Resultados de la Búsqueda:',
-                sectionTitle: 'Capítulos y Temas Esenciales',
+                sectionTitleEssential: 'Capítulos y Temas Esenciales',
+                sectionTitleAdvanced: 'Temas Avanzados y Tendencias',
                 chapter1Title: 'Introducción a los Pagos Digitales',
                 chapter1Description: 'Descubra qué son los pagos digitales, su historia y por qué se han vuelto tan importantes en el mundo actual. Comprenda los beneficios y desafíos.',
                 chapter2Title: 'Tipos de Pagos Digitales',
@@ -377,62 +715,108 @@
                 messageBoxEmptySearch: 'Por favor, ingrese algo para buscar.',
                 messageBoxNoResults: 'No se pudieron obtener resultados de búsqueda. Inténtelo de nuevo.',
                 messageBoxError: 'Se produjo un error al procesar su búsqueda. Por favor, inténtelo de nuevo más tarde.',
-                messageBoxOk: 'OK'
+                messageBoxOk: 'OK',
+                modalTitle: '¡Descargue su Guía Gratuita!',
+                modalDescription: 'Rellene sus datos para recibir el e-book "Pagos Digitales para Dummies" directamente en su correo electrónico.',
+                formFirstNamePlaceholder: 'Nombre',
+                formLastNamePlaceholder: 'Apellido',
+                formCorporateEmailPlaceholder: 'Correo electrónico corporativo',
+                formCompanyPlaceholder: 'Empresa',
+                formJobLevelPlaceholder: 'Nivel de trabajo',
+                jobLevelEntry: 'Nivel de entrada',
+                jobLevelMid: 'Nivel intermedio',
+                jobLevelSenior: 'Nivel sénior',
+                jobLevelManager: 'Gerente',
+                jobLevelDirector: 'Director',
+                jobLevelExecutive: 'Ejecutivo',
+                formJobFunctionPlaceholder: 'Función de trabajo',
+                formPhoneNumberPlaceholder: 'Número de teléfono',
+                formCountryPlaceholder: 'País',
+                formConsentText: 'Al proporcionar mi información de contacto, acepto el procesamiento de mis datos por parte de AuthPros y sus socios, y autorizo a AuthPros a contactarme y compartir información con sus socios. Reconozco que la información proporcionada puede ser utilizada y asociada con otra información que AuthPros haya recopilado y utilizado de acuerdo con su <a href="#">Aviso de privacidad</a>.',
+                privacyNoticeLink: 'Aviso de privacidad',
+                formSubmitButton: 'Enviar',
+                formSuccess: '¡Gracias! Su descarga ha sido enviada a su correo electrónico.',
+                formError: 'Se produjo un error al enviar sus datos. Por favor, inténtelo de nuevo.',
+                formProcessing: 'Processando...'
             }
         };
 
         let currentLang = 'pt'; // Idioma padrão
 
-        // Função para mostrar a caixa de mensagem personalizada
+        // Function to show custom message box
         function showMessageBox(messageKey) {
             const message = translations[currentLang][messageKey];
             document.getElementById('messageText').innerText = message;
             document.getElementById('messageBox').style.display = 'block';
         }
 
-        // Função para esconder a caixa de mensagem personalizada
+        // Function to hide custom message box
         function hideMessageBox() {
             document.getElementById('messageBox').style.display = 'none';
         }
 
-        // Função para aplicar as traduções
+        // Function to apply translations
         function applyTranslations(lang) {
             currentLang = lang;
-            document.documentElement.lang = lang; // Atualiza o atributo lang da tag html
+            document.documentElement.lang = lang; // Updates the lang attribute of the html tag
 
-            // Atualiza o título da página
+            // Updates the page title
             document.querySelector('title').innerText = translations[lang].pageTitle;
 
-            // Atualiza os elementos com data-key
+            // Updates elements with data-key
             document.querySelectorAll('[data-key]').forEach(element => {
+                // Skip option elements as they are handled separately by the select[data-key] loop
+                if (element.tagName === 'OPTION') {
+                    return;
+                }
+
                 const key = element.getAttribute('data-key');
                 if (translations[lang][key]) {
                     if (element.tagName === 'INPUT') {
                         element.placeholder = translations[lang][key];
-                    } else {
+                    }
+                    else {
                         element.innerHTML = translations[lang][key];
                     }
                 }
             });
 
-            // Atualiza o estado ativo dos botões de idioma
+            // Update select options separately if they have data-key
+            document.querySelectorAll('select[data-key]').forEach(selectElement => {
+                const placeholderKey = selectElement.getAttribute('data-key');
+                if (translations[lang][placeholderKey]) {
+                    const placeholderOption = selectElement.querySelector('option[disabled][selected]');
+                    if (placeholderOption) {
+                        placeholderOption.innerText = translations[lang][placeholderKey];
+                    }
+                }
+                selectElement.querySelectorAll('option:not([disabled])').forEach(option => {
+                    const optionKey = option.getAttribute('data-key');
+                    if (translations[lang][optionKey]) {
+                        option.innerText = translations[lang][optionKey];
+                    }
+                });
+            });
+
+
+            // Updates the active state of language buttons
             const buttons = document.querySelectorAll('.language-buttons button');
             buttons.forEach(button => button.classList.remove('active'));
             document.getElementById('lang-' + lang).classList.add('active');
         }
 
-        // Função para lidar com a troca de idioma
+        // Function to handle language switching
         function setLanguage(lang) {
             applyTranslations(lang);
-            // showMessageBox('messageBoxLangInDev'); // Mensagem de que a funcionalidade está em desenvolvimento
+            // showMessageBox('messageBoxLangInDev'); // Message that functionality is in development
         }
 
-        // Inicializa a página com o idioma padrão
+        // Initializes the page with the default language
         document.addEventListener('DOMContentLoaded', () => {
             applyTranslations(currentLang);
         });
 
-        // Função para lidar com a entrada de pesquisa
+        // Function to handle search input
         async function handleSearch(event) {
             if (event.key === 'Enter') {
                 const query = document.getElementById('searchInput').value;
@@ -446,8 +830,8 @@
                     return;
                 }
 
-                searchLoader.style.display = 'block'; // Mostra o spinner
-                searchResultsDiv.style.display = 'none'; // Esconde resultados anteriores
+                searchLoader.style.display = 'block'; // Show spinner
+                searchResultsDiv.style.display = 'none'; // Hide previous results
 
                 try {
                     // LLM API call for search
@@ -477,7 +861,7 @@
                         result.candidates[0].content.parts.length > 0) {
                         const text = result.candidates[0].content.parts[0].text;
                         searchResultText.innerText = text;
-                        searchResultsDiv.style.display = 'block'; // Mostra os resultados
+                        searchResultsDiv.style.display = 'block'; // Show results
                     } else {
                         searchResultText.innerText = translations[currentLang].messageBoxNoResults;
                         searchResultsDiv.style.display = 'block';
@@ -487,10 +871,83 @@
                     searchResultText.innerText = translations[currentLang].messageBoxError;
                     searchResultsDiv.style.display = 'block';
                 } finally {
-                    searchLoader.style.display = 'none'; // Esconde o spinner
+                    searchLoader.style.display = 'none'; // Hide spinner
                 }
             }
         }
+
+        // Modal functions
+        const downloadModal = document.getElementById('downloadModal');
+        const downloadForm = document.getElementById('downloadForm');
+        const formLoader = document.getElementById('formLoader');
+
+        function openDownloadModal(event) {
+            event.preventDefault(); // Prevent default link behavior
+            downloadModal.style.display = 'flex'; // Use flex to center
+        }
+
+        function closeDownloadModal() {
+            downloadModal.style.display = 'none';
+            downloadForm.reset(); // Clear form fields on close
+            formLoader.style.display = 'none'; // Hide loader
+        }
+
+        // Close modal if user clicks outside of it
+        window.onclick = function(event) {
+            if (event.target == downloadModal) {
+                closeDownloadModal();
+            }
+        }
+
+        // Handle form submission
+        downloadForm.addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            formLoader.style.display = 'block'; // Show spinner
+            const submitButton = downloadForm.querySelector('button[type="submit"]');
+            submitButton.disabled = true; // Disable button during submission
+            submitButton.innerHTML = translations[currentLang].formProcessing + ' <span class="loader"></span>'; // Change button text and add loader
+
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                corporateEmail: document.getElementById('corporateEmail').value,
+                company: document.getElementById('company').value,
+                jobLevel: document.getElementById('jobLevel').value,
+                jobFunction: document.getElementById('jobFunction').value,
+                phoneNumber: document.getElementById('phoneNumber').value,
+                country: document.getElementById('country').value,
+                consent: document.getElementById('consent').checked
+            };
+
+            // Placeholder for Google Sheets API endpoint or a backend script
+            const googleSheetsApiUrl = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL'; // <<< IMPORTANT: Replace with your actual Google Apps Script Web App URL
+
+            try {
+                const response = await fetch(googleSheetsApiUrl, {
+                    method: 'POST',
+                    mode: 'no-cors', // Use 'no-cors' for Google Apps Script if not handling CORS explicitly
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+
+                // Since we are using 'no-cors', we cannot inspect the response directly.
+                // Assume success for demonstration purposes. In a real application,
+                // you would need a proper backend or Google Apps Script to return a success status.
+                showMessageBox('formSuccess');
+
+            } catch (error) {
+                console.error('Erro ao enviar dados para o Google Sheets:', error);
+                showMessageBox('formError');
+            } finally {
+                formLoader.style.display = 'none'; // Hide spinner
+                submitButton.disabled = false; // Re-enable button
+                submitButton.innerHTML = translations[currentLang].formSubmitButton + ' <span class="arrow-icon">&#8594;</span>'; // Restore button text and arrow
+                closeDownloadModal(); // Close modal after submission attempt
+            }
+        });
     </script>
 </body>
 </html>

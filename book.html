@@ -396,8 +396,7 @@
 
         .modal-content input[type="text"],
         .modal-content input[type="email"],
-        .modal-content input[type="tel"],
-        .modal-content select { /* Added select for dropdowns */
+        .modal-content input[type="tel"] { /* Removed select from here */
             padding: 0.75rem;
             border: 1px solid #ccc;
             border-radius: 8px;
@@ -407,7 +406,7 @@
         }
 
         .modal-content button[type="submit"] {
-            background-color: #e60000; /* Red button as in the image */
+            background-color: #007bff; /* Changed to blue */
             color: white;
             padding: 0.8rem 1.5rem;
             border: none;
@@ -423,7 +422,7 @@
         }
 
         .modal-content button[type="submit"]:hover {
-            background-color: #b30000;
+            background-color: #0056b3; /* Darker blue on hover */
         }
 
         .consent-checkbox {
@@ -547,18 +546,9 @@
             <form id="downloadForm">
                 <input type="text" id="firstName" name="firstName" data-key="formFirstNamePlaceholder" placeholder="Nome" required>
                 <input type="text" id="lastName" name="lastName" data-key="formLastNamePlaceholder" placeholder="Sobrenome" required>
-                <input type="email" id="corporateEmail" name="corporateEmail" data-key="formCorporateEmailPlaceholder" placeholder="Email corporativo" required>
+                <input type="email" id="corporateEmail" name="corporateEmail" data-key="formCorporateEmailPlaceholder" placeholder="Seu melhor email" required>
                 <input type="text" id="company" name="company" data-key="formCompanyPlaceholder" placeholder="Empresa" required>
-                <select id="jobLevel" name="jobLevel" data-key="formJobLevelPlaceholder" required>
-                    <option value="" disabled selected data-key="formJobLevelPlaceholder">Nível de trabalho</option>
-                    <option value="entry" data-key="jobLevelEntry">Entrada</option>
-                    <option value="mid" data-key="jobLevelMid">Intermediário</option>
-                    <option value="senior" data-key="jobLevelSenior">Sênior</option>
-                    <option value="manager" data-key="jobLevelManager">Gerente</option>
-                    <option value="director" data-key="jobLevelDirector">Diretor</option>
-                    <option value="executive" data-key="jobLevelExecutive">Executivo</option>
-                </select>
-                <input type="text" id="jobFunction" name="jobFunction" data-key="formJobFunctionPlaceholder" placeholder="Função de trabalho" required>
+                <!-- Removed Job Level and Job Function fields -->
                 <input type="tel" id="phoneNumber" name="phoneNumber" data-key="formPhoneNumberPlaceholder" placeholder="Número de telefone" required>
                 <input type="text" id="country" name="country" data-key="formCountryPlaceholder" placeholder="País" required>
                 <div class="consent-checkbox form-full-width">
@@ -614,16 +604,16 @@
                 modalDescription: 'Preencha seus dados para receber o e-book "Pagamentos Digitais for Dummies" diretamente no seu e-mail.',
                 formFirstNamePlaceholder: 'Nome',
                 formLastNamePlaceholder: 'Sobrenome',
-                formCorporateEmailPlaceholder: 'Email corporativo',
+                formCorporateEmailPlaceholder: 'Seu melhor email',
                 formCompanyPlaceholder: 'Empresa',
-                formJobLevelPlaceholder: 'Nível de trabalho',
-                jobLevelEntry: 'Entrada',
-                jobLevelMid: 'Intermediário',
-                jobLevelSenior: 'Sênior',
-                jobLevelManager: 'Gerente',
-                jobLevelDirector: 'Diretor',
-                jobLevelExecutive: 'Executivo',
-                formJobFunctionPlaceholder: 'Função de trabalho',
+                formJobLevelPlaceholder: 'Nível de trabalho', // Kept for translation consistency, though field removed
+                jobLevelEntry: 'Entrada', // Kept for translation consistency, though field removed
+                jobLevelMid: 'Intermediário', // Kept for translation consistency, though field removed
+                jobLevelSenior: 'Sênior', // Kept for translation consistency, though field removed
+                jobLevelManager: 'Gerente', // Kept for translation consistency, though field removed
+                jobLevelDirector: 'Diretor', // Kept for translation consistency, though field removed
+                jobLevelExecutive: 'Executivo', // Kept for translation consistency, though field removed
+                formJobFunctionPlaceholder: 'Função de trabalho', // Kept for translation consistency, though field removed
                 formPhoneNumberPlaceholder: 'Número de telefone',
                 formCountryPlaceholder: 'País',
                 formConsentText: 'Ao fornecer minhas informações de contato, eu concordo com o processamento de meus dados pela AuthPros e seus parceiros, e autorizo a AuthPros a entrar em contato comigo e a compartilhar informações com seus parceiros. Reconheço que as informações fornecidas podem ser utilizadas e associadas a outras informações que a AuthPros tenha coletado e utilizado conforme seu <a href="#">Aviso de privacidade</a>.',
@@ -667,16 +657,16 @@
                 modalDescription: 'Fill in your details to receive the "Digital Payments for Dummies" e-book directly in your email.',
                 formFirstNamePlaceholder: 'First Name',
                 formLastNamePlaceholder: 'Last Name',
-                formCorporateEmailPlaceholder: 'Corporate Email',
+                formCorporateEmailPlaceholder: 'Your Best Email',
                 formCompanyPlaceholder: 'Company',
-                formJobLevelPlaceholder: 'Job Level',
-                jobLevelEntry: 'Entry',
-                jobLevelMid: 'Mid-Level',
-                jobLevelSenior: 'Senior',
-                jobLevelManager: 'Manager',
-                jobLevelDirector: 'Director',
-                jobLevelExecutive: 'Executive',
-                formJobFunctionPlaceholder: 'Job Function',
+                formJobLevelPlaceholder: 'Job Level', // Kept for translation consistency, though field removed
+                jobLevelEntry: 'Entry', // Kept for translation consistency, though field removed
+                jobLevelMid: 'Mid-Level', // Kept for translation consistency, though field removed
+                jobLevelSenior: 'Senior', // Kept for translation consistency, though field removed
+                jobLevelManager: 'Manager', // Kept for translation consistency, though field removed
+                jobLevelDirector: 'Director', // Kept for translation consistency, though field removed
+                jobLevelExecutive: 'Executive', // Kept for translation consistency, though field removed
+                formJobFunctionPlaceholder: 'Job Function', // Kept for translation consistency, though field removed
                 formPhoneNumberPlaceholder: 'Phone Number',
                 formCountryPlaceholder: 'Country',
                 formConsentText: 'By providing my contact information, I agree to the processing of my data by AuthPros and its partners, and I authorize AuthPros to contact me and share information with its partners. I acknowledge that the information provided may be used and associated with other information that AuthPros has collected and used according to its <a href="#">Privacy Notice</a>.',
@@ -707,7 +697,7 @@
                 chapter4Description: 'Una inmersión profunda en Pix: cómo funciona, sus ventajas, límites y cómo usarlo de manera eficiente y segura en la vida diaria.',
                 chapter5Title: 'Billeteras Digitales y Sus Beneficios',
                 chapter5Description: 'Conozca las principales billeteras digitales (Google Pay, Apple Pay, Samsung Pay) y cómo simplifican sus compras y pagos.',
-                chapter6Title: 'Futuras Tendencias en Pagos',
+                chapter6Title: 'Futuras Tendências em Pagamentos',
                 chapter6Description: '¿Qué esperar del futuro? Pagos por aproximación, biometría, inteligencia artificial y el avance de las monedas digitales de bancos centrales (CBDC).',
                 readMoreLink: 'Leer más',
                 footerCopyright: '&copy; 2025 AuthPros. Todos los derechos reservados.',
@@ -720,16 +710,16 @@
                 modalDescription: 'Rellene sus datos para recibir el e-book "Pagos Digitales para Dummies" directamente en su correo electrónico.',
                 formFirstNamePlaceholder: 'Nombre',
                 formLastNamePlaceholder: 'Apellido',
-                formCorporateEmailPlaceholder: 'Correo electrónico corporativo',
+                formCorporateEmailPlaceholder: 'Su mejor correo electrónico',
                 formCompanyPlaceholder: 'Empresa',
-                formJobLevelPlaceholder: 'Nivel de trabajo',
-                jobLevelEntry: 'Nivel de entrada',
-                jobLevelMid: 'Nivel intermedio',
-                jobLevelSenior: 'Nivel sénior',
-                jobLevelManager: 'Gerente',
-                jobLevelDirector: 'Director',
-                jobLevelExecutive: 'Ejecutivo',
-                formJobFunctionPlaceholder: 'Función de trabajo',
+                formJobLevelPlaceholder: 'Nivel de trabajo', // Kept for translation consistency, though field removed
+                jobLevelEntry: 'Nivel de entrada', // Kept for translation consistency, though field removed
+                jobLevelMid: 'Nivel intermedio', // Kept for translation consistency, though field removed
+                jobLevelSenior: 'Nivel sénior', // Kept for translation consistency, though field removed
+                jobLevelManager: 'Gerente', // Kept for translation consistency, though field removed
+                jobLevelDirector: 'Director', // Kept for translation consistency, though field removed
+                jobLevelExecutive: 'Ejecutivo', // Kept for translation consistency, though field removed
+                formJobFunctionPlaceholder: 'Función de trabajo', // Kept for translation consistency, though field removed
                 formPhoneNumberPlaceholder: 'Número de teléfono',
                 formCountryPlaceholder: 'País',
                 formConsentText: 'Al proporcionar mi información de contacto, acepto el procesamiento de mis datos por parte de AuthPros y sus socios, y autorizo a AuthPros a contactarme y compartir información con sus socios. Reconozco que la información proporcionada puede ser utilizada y asociada con otra información que AuthPros haya recopilado y utilizado de acuerdo con su <a href="#">Aviso de privacidad</a>.',
@@ -737,7 +727,7 @@
                 formSubmitButton: 'Enviar',
                 formSuccess: '¡Gracias! Su descarga ha sido enviada a su correo electrónico.',
                 formError: 'Se produjo un error al enviar sus datos. Por favor, inténtelo de nuevo.',
-                formProcessing: 'Processando...'
+                formProcessing: 'Procesando...'
             }
         };
 
@@ -913,33 +903,33 @@
                 lastName: document.getElementById('lastName').value,
                 corporateEmail: document.getElementById('corporateEmail').value,
                 company: document.getElementById('company').value,
-                jobLevel: document.getElementById('jobLevel').value,
-                jobFunction: document.getElementById('jobFunction').value,
                 phoneNumber: document.getElementById('phoneNumber').value,
                 country: document.getElementById('country').value,
                 consent: document.getElementById('consent').checked
             };
 
-            // Placeholder for Google Sheets API endpoint or a backend script
-            const googleSheetsApiUrl = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL'; // <<< IMPORTANT: Replace with your actual Google Apps Script Web App URL
+            // **IMPORTANTE:** Substitua 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL' pela URL real do seu Google Apps Script Web App.
+            const googleSheetsApiUrl = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL'; 
 
             try {
                 const response = await fetch(googleSheetsApiUrl, {
                     method: 'POST',
-                    mode: 'no-cors', // Use 'no-cors' for Google Apps Script if not handling CORS explicitly
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(formData)
                 });
 
-                // Since we are using 'no-cors', we cannot inspect the response directly.
-                // Assume success for demonstration purposes. In a real application,
-                // you would need a proper backend or Google Apps Script to return a success status.
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                // In a real application, you would parse the response here
+                // const result = await response.json();
                 showMessageBox('formSuccess');
 
             } catch (error) {
-                console.error('Erro ao enviar dados para o Google Sheets:', error);
+                console.error('Erro ao enviar dados para o Google Sheets. Verifique se a URL do Google Apps Script está correta e se o script está publicado com as permissões adequadas:', error);
                 showMessageBox('formError');
             } finally {
                 formLoader.style.display = 'none'; // Hide spinner

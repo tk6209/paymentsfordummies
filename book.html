@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-key="pageTitle">Pagamentos Digitais for Dummies</title>
+    <title data-key="pageTitle">Pagamentos Digitais para Iniciantes</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -467,7 +467,7 @@
                 <a href="#" class="hero-button" onclick="openDownloadModal(event)" data-key="heroButtonText">Baixar o Livro</a>
             </div>
             <div class="hero-image">
-                <img src="https://placehold.co/250x350/007bff/ffffff?text=Capa+do+Livro" alt="Capa do Livro Pagamentos Digitais for Dummies">
+                <img src="https://placehold.co/250x350/007bff/ffffff?text=Capa+do+Livro" alt="Capa do Livro Pagamentos Digitais para Iniciantes">
             </div>
         </div>
     </div>
@@ -475,8 +475,8 @@
     <div class="container">
         <header class="header" style="display: none;">
             <!-- This header is now redundant with the hero banner, keeping it hidden for now -->
-            <img src="https://placehold.co/200x150/007bff/ffffff?text=Book+Cover" alt="Capa do Livro Pagamentos Digitais for Dummies">
-            <h1 data-key="headerTitle">Pagamentos Digitais for Dummies</h1>
+            <img src="https://placehold.co/200x150/007bff/ffffff?text=Book+Cover" alt="Capa do Livro Pagamentos Digitais para Iniciantes">
+            <h1 data-key="headerTitle">Pagamentos Digitais para Iniciantes</h1>
             <p data-key="headerDescription">Um guia completo e descomplicado para entender o mundo dos pagamentos digitais, desde o básico até as tendências mais avançadas. Ideal para quem busca segurança, praticidade e inovação nas transações financeiras.</p>
         </header>
 
@@ -542,7 +542,7 @@
         <div class="modal-content">
             <span class="close-button" onclick="closeDownloadModal()">&times;</span>
             <h2 data-key="modalTitle">Baixe seu Guia Gratuito!</h2>
-            <p data-key="modalDescription">Preencha seus dados para receber o e-book "Pagamentos Digitais for Dummies" diretamente no seu e-mail.</p>
+            <p data-key="modalDescription">Preencha seus dados para receber o e-book "Pagamentos Digitais para Iniciantes" diretamente no seu e-mail.</p>
             <form id="downloadForm">
                 <input type="text" id="firstName" name="firstName" data-key="formFirstNamePlaceholder" placeholder="Nome" required>
                 <input type="text" id="lastName" name="lastName" data-key="formLastNamePlaceholder" placeholder="Sobrenome" required>
@@ -571,11 +571,11 @@
         // Objeto de traduções para diferentes idiomas
         const translations = {
             'pt': {
-                pageTitle: 'Pagamentos Digitais for Dummies',
+                pageTitle: 'Pagamentos Digitais para Iniciantes',
                 heroBannerTitle: 'O Guia Completo para Dominar os Pagamentos Digitais',
                 heroBannerDescription: 'Desvende o universo das transações financeiras modernas com este guia prático e acessível. Tudo o que você precisa saber para pagamentos seguros e eficientes.',
                 heroButtonText: 'Baixar o Livro',
-                headerTitle: 'Pagamentos Digitais for Dummies', // Kept for consistency, though hidden
+                headerTitle: 'Pagamentos Digitais para Iniciantes', // Kept for consistency, though hidden
                 headerDescription: 'Um guia completo e descomplicado para entender o mundo dos pagamentos digitais, desde o básico até as tendências mais avançadas. Ideal para quem busca segurança, praticidade e inovação nas transações financeiras.', // Kept for consistency, though hidden
                 searchInputPlaceholder: 'Pesquisar tópicos no livro...',
                 searchResultsTitle: 'Resultados da Pesquisa:',
@@ -601,7 +601,7 @@
                 messageBoxError: 'Ocorreu um erro ao processar sua pesquisa. Por favor, tente novamente mais tarde.',
                 messageBoxOk: 'OK',
                 modalTitle: 'Baixe seu Guia Gratuito!',
-                modalDescription: 'Preencha seus dados para receber o e-book "Pagamentos Digitais for Dummies" diretamente no seu e-mail.',
+                modalDescription: 'Preencha seus dados para receber o e-book "Pagamentos Digitais para Iniciantes" diretamente no seu e-mail.',
                 formFirstNamePlaceholder: 'Nome',
                 formLastNamePlaceholder: 'Sobrenome',
                 formCorporateEmailPlaceholder: 'Seu melhor email',
@@ -624,11 +624,11 @@
                 formProcessing: 'Processando...'
             },
             'en': {
-                pageTitle: 'Digital Payments for Dummies',
+                pageTitle: 'Digital Payments para Iniciantes',
                 heroBannerTitle: 'The Complete Guide to Mastering Digital Payments',
                 heroBannerDescription: 'Unravel the world of modern financial transactions with this practical and accessible guide. Everything you need to know for secure and efficient payments.',
                 heroButtonText: 'Download the Book',
-                headerTitle: 'Digital Payments for Dummies',
+                headerTitle: 'Digital Payments para Iniciantes',
                 headerDescription: 'A complete and straightforward guide to understanding the world of digital payments, from basics to advanced trends. Ideal for those seeking security, practicality, and innovation in financial transactions.',
                 searchInputPlaceholder: 'Search topics in the book...',
                 searchResultsTitle: 'Search Results:',
@@ -654,7 +654,7 @@
                 messageBoxError: 'An error occurred while processing your search. Please try again later.',
                 messageBoxOk: 'OK',
                 modalTitle: 'Download Your Free Guide!',
-                modalDescription: 'Fill in your details to receive the "Digital Payments for Dummies" e-book directly in your email.',
+                modalDescription: 'Fill in your details to receive the "Digital Payments para Iniciantes" e-book directly in your email.',
                 formFirstNamePlaceholder: 'First Name',
                 formLastNamePlaceholder: 'Last Name',
                 formCorporateEmailPlaceholder: 'Your Best Email',
@@ -827,7 +827,7 @@
                     // LLM API call for search
                     let chatHistory = [];
                     // Construct the prompt in the current language
-                    const promptText = `Gere uma resposta concisa e útil para a seguinte pergunta sobre pagamentos digitais, como se fosse do livro "Pagamentos Digitais for Dummies": "${query}". Mantenha a resposta em ${currentLang === 'en' ? 'inglês' : currentLang === 'es' ? 'espanhol' : 'português'} e com no máximo 150 palavras.`;
+                    const promptText = `Gere uma resposta concisa e útil para a seguinte pergunta sobre pagamentos digitais, como se fosse do livro "Pagamentos Digitais para Iniciantes": "${query}". Mantenha a resposta em ${currentLang === 'en' ? 'inglês' : currentLang === 'es' ? 'espanhol' : 'português'} e com no máximo 150 palavras.`;
                     chatHistory.push({ role: "user", parts: [{ text: promptText }] });
 
                     const payload = { contents: chatHistory };
